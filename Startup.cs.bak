@@ -1,0 +1,18 @@
+using SuperPayments.Models;
+using SuperPayments.Services;
+using Microsoft.EntityFrameworkCore;
+
+public class Startup {
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+
+        services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlite("Data Source=superpayments.db"));
+        services.AddControllersWithViews();
+        services.AddScoped<ISTPService, STPService>();
+        services.AddScoped<IRuleEngineService, RuleEngineService>();
+
+        // ... Other configurations
+    }
+}

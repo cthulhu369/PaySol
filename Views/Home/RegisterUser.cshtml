@@ -1,0 +1,19 @@
+@model SuperPayments.Models.User
+
+<form asp-action="RegisterUser" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <!-- Add other fields as needed -->
+
+    <button type="submit">RegisterUser</button>
+</form>

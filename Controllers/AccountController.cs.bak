@@ -1,0 +1,39 @@
+using Microsoft.AspNetCore.Mvc;
+using SuperPayments.Models;
+
+
+public class AccountController : Controller
+{
+    private readonly ApplicationDbContext _context;
+
+    public AccountController(ApplicationDbContext context)
+    {
+        _context = context;
+        
+        // Ensure the database is created
+        _context.Database.EnsureCreated();
+
+    }
+
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Register(RegisterViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            // Create a new user instance and save it to the database
+            var user = new User { Name = model.Name, Email = model.Email };
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            // Redirect to a confirmation page or another appropriate action
+            return RedirectToAction("Index", "Home");
+        }
+
+        return View(model); // Return the form with validation messages
+    }
+}
