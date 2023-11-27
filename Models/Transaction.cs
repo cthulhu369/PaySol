@@ -7,6 +7,7 @@ namespace SuperPayments.Models
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public string Vendor { get; set; }
+        public string SenderPayKey { get; set; }
 
         // Foreign keys for sender and receiver
         public int SenderId { get; set; }

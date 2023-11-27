@@ -11,8 +11,8 @@ using SuperPayments.Models;
 namespace SuperPayments.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231126235819_asdf")]
-    partial class asdf
+    [Migration("20231127130635_Mig")]
+    partial class Mig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,7 +51,7 @@ namespace SuperPayments.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("User", b =>
+            modelBuilder.Entity("SuperPayments.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,6 +65,10 @@ namespace SuperPayments.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PayKey")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -72,13 +76,13 @@ namespace SuperPayments.Migrations
 
             modelBuilder.Entity("SuperPayments.Models.Transaction", b =>
                 {
-                    b.HasOne("User", "Receiver")
+                    b.HasOne("SuperPayments.Models.User", "Receiver")
                         .WithMany("ReceivedTransactions")
                         .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("User", "Sender")
+                    b.HasOne("SuperPayments.Models.User", "Sender")
                         .WithMany("SentTransactions")
                         .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -89,7 +93,7 @@ namespace SuperPayments.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("User", b =>
+            modelBuilder.Entity("SuperPayments.Models.User", b =>
                 {
                     b.Navigation("ReceivedTransactions");
 

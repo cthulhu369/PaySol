@@ -25,10 +25,11 @@ public class AccountController : Controller
     {
         try
         {
+            model.PayKey = GeneratePayKey();
             _context.Add(model);
             _context.SaveChanges();
 
-            ViewBag.Message = $"User registered successfully. ID: {model.Id}, Email: {model.Email}, Name: {model.Name}";
+            ViewBag.Message = $"User registered successfully. ID: {model.Id}, Email: {model.Email}, Name: {model.Name}, PayKey: {model.PayKey}";
             Console.WriteLine(ViewBag.Message);
             return View("Register"); // Assuming "Register" is your view name
         }
@@ -39,6 +40,14 @@ public class AccountController : Controller
             return View("Register");
         }
     }
+    private string GeneratePayKey()
+    {
+        var random = new Random();
+        return new string(Enumerable.Repeat("0123456789", 10)
+                        .Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+    // Inside the registration method
+
 
 
 }

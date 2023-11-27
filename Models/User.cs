@@ -6,9 +6,12 @@ namespace SuperPayments.Models {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string PayKey { get; set; }
+
 
         // Navigation properties
         public List<Transaction> SentTransactions { get; set; }
         public List<Transaction> ReceivedTransactions { get; set; }
+        
     }
 }

@@ -1,0 +1,36 @@
+@model SuperPayments.Models.Transaction
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<h2>MakePayment</h2>
+
+<form asp-action="MakePayment" asp-controller="Transaction" method="post">
+    <div>
+        <label asp-for="SenderPayKey">Your PayKey</label>
+        <input asp-for="SenderPayKey" required />
+        <span asp-validation-for="SenderPayKey"></span>
+    </div>
+    <div>
+        <label asp-for="ReceiverId">Receiver ID</label>
+        <input asp-for="ReceiverId" required />
+        <span asp-validation-for="ReceiverId"></span>
+    </div>
+    <div>
+        <label asp-for="Amount">Amount</label>
+        <input asp-for="Amount" required />
+        <span asp-validation-for="Amount"></span>
+    </div>
+    <button type="submit">Submit Payment</button>
+</form>
