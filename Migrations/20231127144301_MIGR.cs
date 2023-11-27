@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SuperPayments.Migrations
 {
     /// <inheritdoc />
-    public partial class Mig : Migration
+    public partial class MIGR : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,6 +35,7 @@ namespace SuperPayments.Migrations
                     Amount = table.Column<decimal>(type: "TEXT", nullable: false),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Vendor = table.Column<string>(type: "TEXT", nullable: false),
+                    SenderPayKey = table.Column<string>(type: "TEXT", nullable: false),
                     SenderId = table.Column<int>(type: "INTEGER", nullable: false),
                     ReceiverId = table.Column<int>(type: "INTEGER", nullable: false)
                 },

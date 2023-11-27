@@ -9,6 +9,7 @@ namespace SuperPayments.Models {
         public string DbPath { get; }
         public ApplicationDbContext() {
             DbPath = "/home/ericp/Coding/csharp/SuperPayments/superpayments.db";
+            OnConfiguring(new DbContextOptionsBuilder<ApplicationDbContext>());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {

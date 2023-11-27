@@ -67,6 +67,7 @@ public class HomeController : Controller
     public async Task<IActionResult> MakePayment(string senderPayKey, int receiverId, decimal amount)
         {
             var _context = new ApplicationDbContext();
+            _context.Database.EnsureCreated();
             // Validate sender based on PayKey
             var sender = await _context.Users.FirstOrDefaultAsync(u => u.PayKey == senderPayKey);
             if (sender == null)

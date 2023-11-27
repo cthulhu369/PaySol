@@ -16,7 +16,7 @@
 
 <h2>MakePayment</h2>
 
-<form asp-action="MakePayment" asp-controller="Transaction" method="post">
+<form asp-action="MakePayment" method="post">
     <div>
         <label asp-for="SenderPayKey">Your PayKey</label>
         <input asp-for="SenderPayKey" required />
@@ -28,9 +28,14 @@
         <span asp-validation-for="ReceiverId"></span>
     </div>
     <div>
+        <label asp-for="Vendor">Vendor</label>
+        <input asp-for="Vendor" required />
+        <span asp-validation-for="Vendor"></span>
+    </div>
+    <div>
         <label asp-for="Amount">Amount</label>
         <input asp-for="Amount" required />
         <span asp-validation-for="Amount"></span>
     </div>
-    <button type="submit">Submit Payment</button>
+    <button type="submit">SubmitPayment</button>
 </form>
