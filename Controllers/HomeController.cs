@@ -71,15 +71,26 @@ public class HomeController : Controller
             // Validate sender based on PayKey
             var sender = await _context.Users.FirstOrDefaultAsync(u => u.PayKey == senderPayKey);
             if (sender == null)
-            {
-                return Json(new { success = false, message = "Invalid sender paykey." });
+            {   
+                ViewBag.Message = $"Invalid sender paykey.";
+                Console.WriteLine(ViewBag.Message);
+                return View("MakePayment");
             }
 
             // Validate receiver existence
             var receiver = await _context.Users.FindAsync(receiverId);
             if (receiver == null)
             {
-                return Json(new { success = false, message = "Receiver not found." });
+                ViewBag.Message = $"Receiver not found.";
+                Console.WriteLine(ViewBag.Message);
+                return View("MakePayment");
+            }
+            // Validate field datatypes
+            if (amount <= 0)
+            {
+                ViewBag.Message = $"Invalid amount.";
+                Console.WriteLine(ViewBag.Message);
+                return View("MakePayment");
             }
 
             // Create and save transaction
@@ -92,8 +103,9 @@ public class HomeController : Controller
             };
             _context.Transactions.Add(transaction);
             await _context.SaveChangesAsync();
+            ViewBag.Message = $"Payment successful. Transaction ID: {transaction.Id}";
 
-            return Json(new { success = true, message = "Payment successful." });
+            return View("MakePayment");
         }
 
 
