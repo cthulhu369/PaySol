@@ -107,6 +107,14 @@ public class HomeController : Controller
 
             return View("MakePayment");
         }
+        public IActionResult GeneralLedger()
+        {
+            var _context = new ApplicationDbContext();
+            _context.Database.EnsureCreated();
+            var transactions = _context.Transactions.ToList(); // Assuming _context is your DbContext
+            return View(transactions);
+        }
+
 
 
 }

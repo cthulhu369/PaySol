@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/ericp/Coding/csharp/SuperPayments
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/ericp/Coding/csharp/SuperPayments/Views/Home/GeneralLedger.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9HZW5lcmFsTGVkZ2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/ericp/Coding/csharp/SuperPayments/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -11,8 +11,8 @@ using SuperPayments.Models;
 namespace SuperPayments.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231127145855_MYMIG")]
-    partial class MYMIG
+    [Migration("20231127173130_MIG")]
+    partial class MIG
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,0 +1,26 @@
+@model IEnumerable<SuperPayments.Models.Transaction>
+
+<h2>General Ledger</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Sender ID</th>
+            <th>Receiver ID</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var transaction in Model)
+    {
+        <tr>
+            <td>@transaction.Id</td>
+            <td>@transaction.SenderId</td>
+            <td>@transaction.ReceiverId</td>
+            <td>@transaction.Amount</td>
+        </tr>
+    }
+    </tbody>
+</table>
+

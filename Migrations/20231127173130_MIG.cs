@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SuperPayments.Migrations
 {
     /// <inheritdoc />
-    public partial class MYMIG : Migration
+    public partial class MIG : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
