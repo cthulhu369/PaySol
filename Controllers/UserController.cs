@@ -23,11 +23,22 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult RegisterUser(User model)
     {
-        using (var db = new ApplicationDbContext()) {
-            db.Add(model);
-            db.SaveChanges();
-        }
+        try
+        {
+            _context.Add(model);
+            _context.SaveChanges();
 
-        return View(model); // Return the form with validation messages
+            ViewBag.Message = $"User registered successfully. ID: {model.Id}, Email: {model.Email}, Name: {model.Name}";
+            Console.WriteLine(ViewBag.Message);
+            return View("Register"); // Assuming "Register" is your view name
+        }
+        catch (Exception ex)
+        {
+            ViewBag.ErrorMessage = ex.Message;
+            Console.WriteLine(ViewBag.ErrorMessage);
+            return View("Register");
+        }
     }
+
+
 }

@@ -1,5 +1,19 @@
 @model SuperPayments.Models.User
 
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
 <form asp-action="RegisterUser" method="post">
     <div>
         <label asp-for="Name"></label>
@@ -17,3 +31,5 @@
 
     <button type="submit">RegisterUser</button>
 </form>
+
+

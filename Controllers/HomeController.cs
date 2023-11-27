@@ -29,14 +29,21 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult RegisterUser(User model)
-    {
-        using (var db = new ApplicationDbContext()) {
-            db.Add(model);
-            db.SaveChanges();
-        }
+    public IActionResult RegisterUser(User model) {
+        try {
+            using (var db = new ApplicationDbContext()) {
+                db.Add(model);
+                db.SaveChanges();
+            }
 
-        return View(model); // Return the form with validation messages
+            ViewBag.Message = $"User registered successfully. ID: {model.Id}, Email: {model.Email}, Name: {model.Name}";
+            Console.WriteLine(ViewBag.Message);
+            return View("RegisterUser"); // Assuming "Register" is your view name
+        } catch (Exception ex) {
+            ViewBag.ErrorMessage = ex.Message;
+            Console.WriteLine(ViewBag.ErrorMessage);
+            return View("RegisterUser");
+        }
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
