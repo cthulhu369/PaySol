@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SuperPayments.Migrations
 {
     /// <inheritdoc />
-    public partial class MIGR : Migration
+    public partial class MYMIG : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,10 +34,10 @@ namespace SuperPayments.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Amount = table.Column<decimal>(type: "TEXT", nullable: false),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Vendor = table.Column<string>(type: "TEXT", nullable: false),
-                    SenderPayKey = table.Column<string>(type: "TEXT", nullable: false),
+                    Vendor = table.Column<string>(type: "TEXT", nullable: true),
                     SenderId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ReceiverId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ReceiverId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SenderPayKey = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

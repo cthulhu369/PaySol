@@ -11,8 +11,8 @@ using SuperPayments.Models;
 namespace SuperPayments.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231127144301_MIGR")]
-    partial class MIGR
+    [Migration("20231127145855_MYMIG")]
+    partial class MYMIG
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,11 +39,9 @@ namespace SuperPayments.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SenderPayKey")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Vendor")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

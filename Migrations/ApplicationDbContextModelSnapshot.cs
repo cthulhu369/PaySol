@@ -36,11 +36,9 @@ namespace SuperPayments.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SenderPayKey")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Vendor")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
